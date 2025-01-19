@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto Card Flip</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .flip-card {
+      perspective: 1000px;
+      /* Define the 3D perspective */
+    }
+
+    .flip-card-inner {
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+      backface-visibility: hidden;
+    }
+
+    .flip-card-back {
+      transform: rotateY(180deg);
+    }
+  </style>
+</head>
+
+<body class="flex items-center justify-center min-h-screen bg-gray-900">
+
+  <div class="flip-card w-96 h-80">
+    <div class="flip-card-inner relative w-full h-full">
+      <!-- Front of the card -->
+      <div
+        class="flip-card-front absolute w-full h-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white flex flex-col items-center justify-start rounded-lg shadow-lg p-4">
+        <img src="./bitcoin.jpg" alt="Bitcoin" class="w-24 h-24 rounded-full mt-4">
+        <h2 class="text-2xl font-bold mt-2">Bitcoin (BTC)</h2>
+        <p class="mt-2 text-center">The first and most popular cryptocurrency with a market cap of over $550B.</p>
+        <button class="mt-auto bg-white text-indigo-600 font-semibold px-4 py-2 rounded-lg shadow hover:bg-gray-100">
+          See More
+        </button>
+      </div>
+
+      <!-- Back of the card -->
+      <div
+        class="flip-card-back absolute w-full h-full bg-gradient-to-r from-green-400 to-blue-500 text-white flex flex-col items-center justify-start rounded-lg shadow-lg p-4">
+        <h2 class="text-2xl font-bold mt-4">Market Stats</h2>
+        <ul class="mt-4 text-center">
+          <li class="mb-2">Market Cap: $550B</li>
+          <li class="mb-2">24H Volume: $30B</li>
+          <li class="mb-2">Circulating Supply: 19M BTC</li>
+        </ul>
+        <p class="mt-4 px-2 text-center">
+          Bitcoin is the foundation of the crypto market, powering decentralized financial ecosystems.
+        </p>
+        <button class="mt-auto bg-white text-green-600 font-semibold px-4 py-2 rounded-lg shadow hover:bg-gray-100">
+          See More
+        </button>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
