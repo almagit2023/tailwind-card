@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto Store</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .flip-card {
+      perspective: 1000px;
+      width: 100%;
+      height: 100%;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 0.75rem;
+    }
+
+    .flip-card-back {
+      transform: rotateY(180deg);
+    }
+
+    /* Sidebar toggle for mobile */
+    @media (max-width: 768px) {
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 64%;
+        height: 100%;
+        transition: left 0.3s ease;
+        z-index: 1000;
+      }
+
+      .sidebar.active {
+        left: 0;
+      }
+
+      .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+      }
+
+      .overlay.active {
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-gray-900 text-gray-200 min-h-screen">
+  <!-- Sidebar Toggle Button for Mobile -->
+  <button id="sidebarToggle" class="md:hidden fixed top-4 left-4 z-50 p-2 bg-gray-800 rounded-lg text-white">
+    ☰
+  </button>
+
+  <!-- Overlay for Mobile Sidebar -->
+  <div id="overlay" class="overlay"></div>
+
+  <!-- Sidebar and Main Layout -->
+  <div class="flex">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar w-64 h-screen bg-gray-800 p-6">
+      <h2 class="text-2xl font-bold text-white mb-6">Crypto Store</h2>
+      <nav>
+        <ul>
+          <li class="mb-4"><a href="#" class="hover:text-indigo-400">Home</a></li>
+          <li class="mb-4"><a href="#" class="hover:text-indigo-400">About</a></li>
+          <li><a href="#" class="hover:text-indigo-400">Contact Us</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 p-6">
+      <!-- Hero Section -->
+      <header class="mb-12 text-center">
+        <h1 class="text-4xl font-bold mb-4">Welcome to Crypto Store</h1>
+        <p class="text-lg text-gray-400">Explore the latest updates on top cryptocurrencies.</p>
+      </header>
+
+      <!-- Crypto Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- XRP -->
+        <div class="flip-card h-96">
+          <div class="flip-card-inner">
+            <div
+              class="flip-card-front bg-indigo-500 text-white shadow-lg flex flex-col items-center justify-center p-4">
+              <img src="./images/xrp.jpg" alt="XRP" class="w-48 h-48 mb-4">
+              <h2 class="text-xl font-bold">XRP (Ripple)</h2>
+              <p class="text-center mt-2">A payment protocol known for fast transactions.</p>
+              <button class="bg-white text-indigo-500 font-bold py-2 px-4 mt-4 rounded hover:bg-indigo-100">Read
+                More</button>
+            </div>
+            <div class="flip-card-back bg-green-500 text-white shadow-lg flex flex-col items-center justify-center p-4">
+              <h3 class="text-xl font-bold">Market Stats</h3>
+              <ul class="mt-4">
+                <li>Price: $0.78</li>
+                <li>Market Cap: $35B</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dogecoin -->
+        <div class="flip-card h-96">
+          <div class="flip-card-inner">
+            <div
+              class="flip-card-front bg-yellow-500 text-white shadow-lg flex flex-col items-center justify-center p-4">
+              <img src="./images/doge.jpeg" alt="XRP" class="w-48 h-48 mb-4">
+              <h2 class="text-xl font-bold">Dogecoin (DOGE)</h2>
+              <p class="text-center mt-2">The fun, meme-based cryptocurrency.</p>
+              <button class="bg-white text-yellow-500 font-bold py-2 px-4 mt-4 rounded hover:bg-yellow-100">Read
+                More</button>
+            </div>
+            <div class="flip-card-back bg-green-500 text-white shadow-lg flex flex-col items-center justify-center p-4">
+              <h3 class="text-xl font-bold">Market Stats</h3>
+              <ul class="mt-4">
+                <li>Price: $0.08</li>
+                <li>Market Cap: $10B</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ethereum -->
+        <div class="flip-card h-96">
+          <div class="flip-card-inner">
+            <div class="flip-card-front bg-blue-500 text-white shadow-lg flex flex-col items-center justify-center p-4">
+              <img src="./images/eth.png" alt="Ethereum" class="w-48 h-48 mb-4">
+              <h2 class="text-xl font-bold">Ethereum (ETH)</h2>
+              <p class="text-center mt-2">A decentralized platform for smart contracts.</p>
+              <button class="bg-white text-blue-500 font-bold py-2 px-4 mt-4 rounded hover:bg-blue-100">Read
+                More</button>
+            </div>
+            <div class="flip-card-back bg-green-500 text-white shadow-lg flex flex-col items-center justify-center p-4">
+              <h3 class="text-xl font-bold">Market Stats</h3>
+              <ul class="mt-4">
+                <li>Price: $1,500</li>
+                <li>Market Cap: $220B</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tether -->
+        <div class="flip-card h-96">
+          <div class="flip-card-inner">
+            <div
+              class="flip-card-front bg-green-500 text-white shadow-lg flex flex-col items-center justify-center p-4">
+              <img src="./images/usdt.jpg" alt="Tether" class="w-48 h-48 mb-4">
+              <h2 class="text-xl font-bold">Tether (USDT)</h2>
+              <p class="text-center mt-2">A stablecoin pegged to the US dollar.</p>
+              <button class="bg-white text-green-500 font-bold py-2 px-4 mt-4 rounded hover:bg-green-100">Read
+                More</button>
+            </div>
+            <div class="flip-card-back bg-green-500 text-white shadow-lg flex flex-col items-center justify-center p-4">
+              <h3 class="text-xl font-bold">Market Stats</h3>
+              <ul class="mt-4">
+                <li>Price: $1.00</li>
+                <li>Market Cap: $65B</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Binance Coin -->
+        <div class="flip-card h-96">
+          <div class="flip-card-inner">
+            <div
+              class="flip-card-front bg-purple-500 text-white shadow-lg flex flex-col items-center justify-center p-4">
+              <img src="./images/btc.jpg" alt="XRP" class="w-48 h-48 mb-4">
+              <h2 class="text-xl font-bold">Binance Coin (BNB)</h2>
+              <p class="text-center mt-2">Utility token for the Binance ecosystem.</p>
+              <button class="bg-white text-purple-500 font-bold py-2 px-4 mt-4 rounded hover:bg-purple-100">Read
+                More</button>
+            </div>
+            <div class="flip-card-back bg-green-500 text-white shadow-lg flex flex-col items-center justify-center p-4">
+              <h3 class="text-xl font-bold">Market Stats</h3>
+              <ul class="mt-4">
+                <li>Price: $280</li>
+                <li>Market Cap: $44B</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Solana -->
+        <div class="flip-card h-96">
+          <div class="flip-card-inner">
+            <div class="flip-card-front bg-teal-500 text-white shadow-lg flex flex-col items-center justify-center p-4">
+              <img src="./images/solana.png" alt="XRP" class="w-48 h-48 mb-4">
+              <h2 class="text-xl font-bold">Solana (SOL)</h2>
+              <p class="text-center mt-2">A fast blockchain for decentralized apps.</p>
+              <button class="bg-white text-teal-500 font-bold py-2 px-4 mt-4 rounded hover:bg-teal-100">Read
+                More</button>
+            </div>
+            <div class="flip-card-back bg-green-500 text-white shadow-lg flex flex-col items-center justify-center p-4">
+              <h3 class="text-xl font-bold">Market Stats</h3>
+              <ul class="mt-4">
+                <li>Price: $25</li>
+                <li>Market Cap: $10B</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-gray-400 text-center py-4 mt-12">
+    &copy; 2025 Crypto Store. All rights reserved.
+  </footer>
+
+  <!-- JavaScript for Sidebar Toggle -->
+  <script>
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+
+    sidebarToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+      overlay.classList.toggle('active');
+    });
+
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+    });
+  </script>
+</body>
+
+</html>
